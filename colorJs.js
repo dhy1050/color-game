@@ -1,11 +1,27 @@
 var colors=randomColorArray(6);
-
 var pickerColor = colors[randomNumber()];
 var square = document.querySelectorAll(".square");
 var message = document.getElementById("message");
 var body = document.querySelector("body");
 var button = document.querySelector(".botton");
 var question = document.querySelector("#question");
+var head = document.querySelector(".head");
+var bts = document.querySelector("#bts");
+var btc = document.querySelector("#btc");
+
+bts.addEventListener("click", function(){
+	btc.classList.remove("active");
+	bts.classList.add("active");
+	for(var i=0; i<square.length; i++)
+		square[i].style.borderRadius = "15%";
+})
+btc.addEventListener("click", function(){
+	bts.classList.remove("active");
+	btc.classList.add("active");
+	for(var i=0; i<square.length; i++)
+		square[i].style.borderRadius = "50%";
+})
+
 
 question.textContent = pickerColor;
 
@@ -21,6 +37,7 @@ for(var i = 0; i< colors.length; i++){
 			for(var j = 0 ; j<colors.length; j++){
 				square[j].style.background = pickerColor;
 			}
+			head.style.backgroundColor = pickerColor;
 
 		}else{
 			this.style.backgroundColor = "#232323";
@@ -42,6 +59,7 @@ function reset(){
 		square[i].style.background = colors[i];
 	}
 
+	head.style.backgroundColor = "steelblue";
 	message.textContent = "Pick your answer";
 }
 
